@@ -13,6 +13,7 @@ var saveCustomers = (customers) => {
   fs.writeFileSync('customerData.json',JSON.stringify(customers));
 };
 
+
 //  to add a new customer
 
 var addCustomer = (customer_id,customer_name, customer_email) => {
@@ -43,7 +44,7 @@ var getCustomer = (customer_id) => {
       return customer.customer_id === customer_id;
     });
 
-    return getCustomers[0];
+    return getCustomers[0]
 
 };
 
@@ -56,6 +57,7 @@ var remove = (customer_id) => {
     });
 
     saveCustomers(filteredCustomers);
+
     return customers.length !== filteredCustomers.length
 
 };

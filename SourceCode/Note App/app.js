@@ -38,6 +38,11 @@ const argv =  yargs
     .command('remove','Remove a customer',{
         customer_id: custIdOptions
     })
+    .command('update','Update a customer',{
+        customer_id: custIdOptions,
+        customer_name: custNameOptions,
+        customer_email:custEMailOptions
+    })
     .help()
     .argv;
 
@@ -56,8 +61,6 @@ if (command === 'add'){
         console.log("Customer already exists");
     }
 }
-
-
 else if (command === 'list') {
   var AllCustomers = customers.getAll();
   console.log(`Printing ${AllCustomers.length} customer(s).`);
@@ -75,7 +78,6 @@ else if (command === 'update') {
         console.log("Customer not found");
     }
 }
-
 else if (command === 'read') {
    var customer = customers.getCustomer(argv.custID);
    if(customer){
@@ -85,7 +87,6 @@ else if (command === 'read') {
     console.log("Customer not found");
    }
 }
-
 else if (command === 'remove') {
     var customerRemoved = customers.remove(argv.custID);
     var message = customerRemoved ? 'Customer was removed' : 'Customer not found';
